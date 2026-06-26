@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Estrategia de Marca Personal · Gilmar × Nipponflex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#070b16;
+    --ink:#eaf2ff;
+    --muted:#9fb2cc;
+    --emerald:#10d9a0;
+    --cyan:#38bdf8;
+    --violet:#a78bfa;
+    --gold:#f5c451;
+    --glass:rgba(255,255,255,.06);
+    --glass-strong:rgba(255,255,255,.10);
+    --stroke:rgba(255,255,255,.14);
+    --radius:22px;
+    --shadow:0 20px 60px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    overflow-x:hidden;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ---------- Aurora background ---------- */
+  .aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;mix-blend-mode:screen;animation:float 18s ease-in-out infinite}
+  .b1{width:540px;height:540px;background:var(--emerald);top:-120px;left:-80px}
+  .b2{width:480px;height:480px;background:var(--cyan);top:30%;right:-120px;animation-delay:-4s}
+  .b3{width:520px;height:520px;background:var(--violet);bottom:-160px;left:25%;animation-delay:-8s}
+  .b4{width:360px;height:360px;background:var(--gold);top:55%;left:-100px;opacity:.35;animation-delay:-12s}
+  @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.08)}66%{transform:translate(-30px,40px) scale(.95)}}
+  .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .wrap{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* ---------- Glass primitive ---------- */
+  .glass{
+    background:var(--glass);
+    backdrop-filter:blur(20px) saturate(140%);
+    -webkit-backdrop-filter:blur(20px) saturate(140%);
+    border:1px solid var(--stroke);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+
+  /* ---------- Hero ---------- */
+  header{padding:90px 0 50px;text-align:center}
+  .pill{display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border-radius:100px;
+    font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:26px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--emerald);box-shadow:0 0 14px var(--emerald);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  h1{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(34px,6vw,68px);line-height:1.05;letter-spacing:-.02em}
+  h1 .grad{background:linear-gradient(110deg,var(--emerald),var(--cyan) 50%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{max-width:660px;margin:22px auto 0;color:var(--muted);font-size:clamp(15px,2vw,19px)}
+  .thesis{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:34px}
+  .thesis .from,.thesis .to{padding:12px 22px;border-radius:14px;font-family:'Sora';font-weight:700;font-size:clamp(15px,2.4vw,20px)}
+  .thesis .from{background:rgba(255,90,90,.10);border:1px solid rgba(255,120,120,.3);color:#ff9a9a;text-decoration:line-through;text-decoration-color:rgba(255,120,120,.5)}
+  .thesis .arrow{align-self:center;color:var(--muted);font-size:22px}
+  .thesis .to{background:linear-gradient(110deg,rgba(16,217,160,.16),rgba(56,189,248,.16));border:1px solid rgba(16,217,160,.4);color:var(--ink)}
+
+  /* ---------- Section heads ---------- */
+  section{padding:60px 0}
+  .eyebrow{font-family:'Sora';font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--emerald);font-weight:700;margin-bottom:12px}
+  .sec-title{font-family:'Sora';font-weight:700;font-size:clamp(26px,4vw,42px);letter-spacing:-.02em;line-height:1.12}
+  .sec-desc{color:var(--muted);max-width:620px;margin-top:14px;font-size:16px}
+
+  /* ---------- MIND MAP ---------- */
+  .map{position:relative;margin-top:48px;display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+  .node{padding:24px;position:relative;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,border-color .4s}
+  .node:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.3);box-shadow:0 28px 70px rgba(0,0,0,.55)}
+  .node .ico{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:22px;margin-bottom:14px}
+  .node h3{font-family:'Sora';font-weight:700;font-size:18px;margin-bottom:8px}
+  .node p{color:var(--muted);font-size:14.5px}
+  .node .tag{display:inline-block;margin-top:14px;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--cyan);font-weight:600;padding:5px 11px;border-radius:8px;background:rgba(56,189,248,.10);border:1px solid rgba(56,189,248,.22)}
+
+  .center-node{grid-column:1/-1;text-align:center;padding:38px 28px;
+    background:linear-gradient(135deg,rgba(16,217,160,.14),rgba(167,139,250,.14));border:1px solid rgba(255,255,255,.2)}
+  .center-node .ico{margin:0 auto 16px;width:62px;height:62px;font-size:30px;background:linear-gradient(135deg,var(--emerald),var(--violet))}
+  .center-node h3{font-size:clamp(22px,3.5vw,32px)}
+  .center-node p{max-width:560px;margin:8px auto 0;font-size:16px}
+
+  .span6{grid-column:span 6}
+  .span4{grid-column:span 4}
+  .span3{grid-column:span 3}
+  .ico-em{background:rgba(16,217,160,.15);color:var(--emerald)}
+  .ico-cy{background:rgba(56,189,248,.15);color:var(--cyan)}
+  .ico-vi{background:rgba(167,139,250,.15);color:var(--violet)}
+  .ico-go{background:rgba(245,196,81,.15);color:var(--gold)}
+
+  /* connector line accent on top of branch row */
+  .branch-label{grid-column:1/-1;text-align:center;font-family:'Sora';color:var(--muted);font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin:14px 0 -4px;position:relative}
+  .branch-label::before,.branch-label::after{content:"";position:absolute;top:50%;width:30%;height:1px;background:linear-gradient(90deg,transparent,var(--stroke))}
+  .branch-label::before{left:0}
+  .branch-label::after{right:0;transform:scaleX(-1)}
+
+  /* ---------- Funnel ---------- */
+  .funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+  .step{padding:26px 22px;position:relative;overflow:hidden}
+  .step .num{font-family:'Sora';font-weight:800;font-size:46px;line-height:1;background:linear-gradient(135deg,var(--emerald),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.85}
+  .step h4{font-family:'Sora';font-weight:700;font-size:17px;margin:10px 0 8px}
+  .step p{color:var(--muted);font-size:14px}
+  .step .glow{position:absolute;width:160px;height:160px;border-radius:50%;filter:blur(60px);opacity:.25;top:-50px;right:-50px}
+
+  /* ---------- Avatar diagnosis ---------- */
+  .qa{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+  .qcard{padding:24px}
+  .qcard .q{font-family:'Sora';font-weight:600;font-size:16px;margin-bottom:10px;color:var(--ink)}
+  .qcard .q span{color:var(--gold)}
+  .qcard .a{color:var(--muted);font-size:14px}
+
+  /* ---------- Content engine (YT vs Reels) ---------- */
+  .engine{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+  .engine .col{padding:30px}
+  .engine h3{font-family:'Sora';font-size:20px;display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .engine .lead{color:var(--muted);font-size:14.5px;margin-bottom:18px}
+  .ex{padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--stroke);margin-bottom:11px}
+  .ex .ttl{font-weight:600;font-size:14.5px}
+  .ex .meta{color:var(--muted);font-size:12.5px;margin-top:3px}
+
+  /* ---------- Pillars / do-dont ---------- */
+  .dd{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:38px}
+  .dd .card{padding:28px}
+  .dd h3{font-family:'Sora';font-size:19px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .dd ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .dd li{display:flex;gap:11px;font-size:14.5px;color:var(--muted)}
+  .dd li b{color:var(--ink);font-weight:600}
+  .mark{flex-shrink:0;width:22px;height:22px;border-radius:7px;display:grid;place-items:center;font-size:13px;margin-top:1px}
+  .yes{background:rgba(16,217,160,.16);color:var(--emerald)}
+  .no{background:rgba(255,100,100,.14);color:#ff8f8f}
+
+  /* ---------- CTA / closing ---------- */
+  .closing{margin-top:30px;text-align:center;padding:54px 30px}
+  .closing h2{font-family:'Sora';font-weight:800;font-size:clamp(24px,4vw,40px);letter-spacing:-.02em}
+  .closing h2 .grad{background:linear-gradient(110deg,var(--gold),var(--emerald));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .closing p{color:var(--muted);max-width:560px;margin:16px auto 0}
+
+  footer{text-align:center;padding:40px 0 60px;color:var(--muted);font-size:13px}
+
+  /* ---------- Recipes / comment bait ---------- */
+  .recipes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  .recipe{padding:24px;display:flex;flex-direction:column}
+  .recipe .kw{align-self:flex-start;font-family:'Sora';font-weight:700;font-size:12px;letter-spacing:.05em;
+    padding:7px 13px;border-radius:9px;background:linear-gradient(110deg,rgba(245,196,81,.18),rgba(16,217,160,.14));
+    border:1px solid rgba(245,196,81,.35);color:var(--gold);margin-bottom:14px}
+  .recipe .hook{font-size:14.5px;color:var(--ink);font-style:italic;line-height:1.55}
+  .recipe .rget{margin-top:14px;padding-top:14px;border-top:1px solid var(--stroke);color:var(--muted);font-size:13px}
+  .recipe .rget b{color:var(--emerald);font-weight:600}
+  .dual{margin-top:26px;padding:20px 24px;display:flex;gap:14px;align-items:flex-start}
+  .dual .ico{font-size:24px;flex-shrink:0}
+  .dual p{color:var(--muted);font-size:14.5px}
+  .dual b{color:var(--ink)}
+
+  /* ---------- System flow ---------- */
+  .sysflow{display:flex;align-items:stretch;gap:10px;margin-top:42px;flex-wrap:wrap}
+  .sysnode{flex:1;min-width:150px;padding:20px 18px;text-align:center;position:relative}
+  .sysnode .si{font-size:26px;display:block;margin-bottom:10px}
+  .sysnode h4{font-family:'Sora';font-size:14.5px;font-weight:700;margin-bottom:5px}
+  .sysnode p{color:var(--muted);font-size:12.5px;line-height:1.45}
+  .sysarrow{align-self:center;color:var(--cyan);font-size:24px;font-weight:700;flex-shrink:0}
+  .sysnode.brain{background:linear-gradient(135deg,rgba(16,217,160,.16),rgba(167,139,250,.16));border:1px solid rgba(16,217,160,.4)}
+
+  /* ---------- Roadmap ---------- */
+  .roadmap{display:flex;flex-direction:column;gap:16px;margin-top:42px}
+  .phase{padding:26px 28px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;position:relative}
+  .phase .pnum{font-family:'Sora';font-weight:800;font-size:30px;width:62px;height:62px;border-radius:16px;display:grid;place-items:center;flex-shrink:0}
+  .phase .pbody h4{font-family:'Sora';font-size:18px;font-weight:700;margin-bottom:4px}
+  .phase .pbody .when{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:12px;display:inline-block;padding:4px 10px;border-radius:7px}
+  .phase ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .phase li{display:flex;gap:10px;font-size:14px;color:var(--muted)}
+  .phase li::before{content:"→";color:var(--cyan);flex-shrink:0}
+  .phase li b{color:var(--ink);font-weight:600}
+  .p-manual .pnum{background:rgba(245,196,81,.16);color:var(--gold)}
+  .p-manual .when{background:rgba(245,196,81,.14);color:var(--gold)}
+  .p-semi .pnum{background:rgba(56,189,248,.16);color:var(--cyan)}
+  .p-semi .when{background:rgba(56,189,248,.14);color:var(--cyan)}
+  .p-auto .pnum{background:rgba(167,139,250,.16);color:var(--violet)}
+  .p-auto .when{background:rgba(167,139,250,.14);color:var(--violet)}
+  .p-scale .pnum{background:rgba(16,217,160,.16);color:var(--emerald)}
+  .p-scale .when{background:rgba(16,217,160,.14);color:var(--emerald)}
+
+  .note{margin-top:24px;padding:20px 24px;border-left:3px solid var(--emerald);background:rgba(16,217,160,.06);border-radius:0 14px 14px 0}
+  .note b{color:var(--emerald)}
+  .note p{color:var(--ink);font-size:15px}
+
+  /* ---------- CRM grid ---------- */
+  .crm{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  .crm .c{padding:24px}
+  .crm .c .ci{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:20px;margin-bottom:14px}
+  .crm .c h4{font-family:'Sora';font-size:16px;font-weight:700;margin-bottom:7px}
+  .crm .c p{color:var(--muted);font-size:14px}
+
+  /* ---------- Icons ---------- */
+  .ic{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;display:block}
+  .node .ico .ic{width:24px;height:24px}
+  .center-node .ico .ic{width:30px;height:30px}
+  .engine h3 .ico .ic{width:21px;height:21px}
+  .ci .ic{width:22px;height:22px}
+  .mark .ic{width:13px;height:13px;stroke-width:2.6}
+  .dual .ico{display:flex;color:var(--emerald)}
+  .dual .ico .ic{width:26px;height:26px}
+  .sysnode .si{display:flex;justify-content:center;align-items:center}
+  .sysnode .si .ic{width:28px;height:28px}
+  .c-em{color:var(--emerald)}.c-cy{color:var(--cyan)}.c-vi{color:var(--violet)}.c-go{color:var(--gold)}
+
+  /* ---------- Metrics ---------- */
+  .northstar{margin-top:40px;padding:24px 28px;display:flex;gap:18px;align-items:center;
+    background:linear-gradient(110deg,rgba(16,217,160,.12),rgba(56,189,248,.10));border:1px solid rgba(16,217,160,.32)}
+  .northstar .ns-ic{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;flex-shrink:0;background:rgba(16,217,160,.16);color:var(--emerald)}
+  .northstar .ns-ic .ic{width:28px;height:28px}
+  .northstar h4{font-family:'Sora';font-size:18px;margin-bottom:4px}
+  .northstar p{color:var(--muted);font-size:14.5px}
+  .northstar b{color:var(--ink)}
+
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
+  .metric{padding:24px}
+  .metric .top{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+  .metric .mi{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex-shrink:0}
+  .metric .mi .ic{width:23px;height:23px}
+  .metric .stage{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin-bottom:3px}
+  .metric h4{font-family:'Sora';font-size:16.5px;font-weight:700;line-height:1.2}
+  .metric .what{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+  .signals{display:flex;flex-direction:column;gap:8px}
+  .sig{display:flex;gap:10px;align-items:flex-start;font-size:13px;padding:10px 13px;border-radius:11px;line-height:1.45}
+  .sig .sic{width:16px;height:16px;flex-shrink:0;margin-top:1px}
+  .sig.good{background:rgba(16,217,160,.08);border:1px solid rgba(16,217,160,.2)}
+  .sig.bad{background:rgba(255,110,110,.06);border:1px solid rgba(255,110,110,.18)}
+  .sig.good .sic{color:var(--emerald)}
+  .sig.bad .sic{color:#ff8f8f}
+  .sig span{color:var(--muted)}
+  .sig b{color:var(--ink);font-weight:600}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Print / PDF ---------- */
+  @media print{
+    @page{margin:12mm 11mm}
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+    html,body{background:#070b16 !important}
+    .aurora,.grain{display:none !important}
+    .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+    .blob{animation:none !important}
+    .node:hover{transform:none !important;box-shadow:var(--shadow) !important}
+    header{padding:24px 0 14px !important}
+    section{padding:22px 0 !important}
+    .dot{animation:none !important}
+    /* keep cards whole across page breaks */
+    .node,.metric,.recipe,.phase,.qcard,.engine .col,.crm .c,.step,.sysnode,
+    .dd .card,.northstar,.note,.dual,.closing,.sig{break-inside:avoid;page-break-inside:avoid}
+    .sec-title,h1,h2,h3,h4{break-after:avoid}
+    .sysarrow{display:none !important}
+    .sysflow{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  }
+
+  @media(max-width:860px){
+    .span6,.span4,.span3{grid-column:1/-1}
+    .funnel,.engine,.dd,.qa,.recipes,.crm,.metrics{grid-template-columns:1fr}
+    .map{gap:14px}
+    .sysflow{flex-direction:column}
+    .sysarrow{transform:rotate(90deg)}
+    .phase{grid-template-columns:1fr;gap:14px}
+    .northstar{flex-direction:column;text-align:center}
+  }
+</style>
+</head>
+<body>
+  <div class="aurora">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+  </div>
+  <div class="grain"></div>
+
+  <!-- ICON SPRITE -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-brand" viewBox="0 0 24 24"><path d="M12 3.5l1.7 4.6 4.6 1.7-4.6 1.7L12 16.1l-1.7-4.6L5.7 9.8l4.6-1.7z"/><path d="M18.4 13.8l.6 1.7 1.7.6-1.7.6-.6 1.7-.6-1.7-1.7-.6 1.7-.6z"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.3l-1.3-1.2C6 14.9 3 12.2 3 8.8 3 6.3 5 4.5 7.4 4.5c1.4 0 2.8.7 3.6 1.8.8-1.1 2.2-1.8 3.6-1.8C19 4.5 21 6.3 21 8.8c0 3.4-3 6.1-7.7 10.3z"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.6"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5C10.3 5.2 8 4.5 5 4.5H3.5v13H6c2.4 0 4.5.6 6 1.8 1.5-1.2 3.6-1.8 6-1.8h2.5v-13H19c-3 0-5.3.7-7 2z"/><path d="M12 6.5v12.8"/></symbol>
+      <symbol id="i-message" viewBox="0 0 24 24"><path d="M20.5 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.9A8 8 0 1 1 20.5 11.5z"/></symbol>
+      <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11" rx="2.2"/><rect x="10" y="10" width="4" height="4" rx="1"/><path d="M9 2.5v3M15 2.5v3M9 18.5v3M15 18.5v3M2.5 9h3M2.5 15h3M18.5 9h3M18.5 15h3"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="4.5"/><path d="M10.5 9l4.5 3-4.5 3z"/></symbol>
+      <symbol id="i-zap" viewBox="0 0 24 24"><path d="M12.5 2.5L5 13.5h5.5l-1 8 8.5-11.5h-5.5z"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3.5 12a8.5 8.5 0 0 1 14.3-6.2l2.2 2"/><path d="M20.5 3.5v5h-5"/><path d="M20.5 12a8.5 8.5 0 0 1-14.3 6.2l-2.2-2"/><path d="M3.5 20.5v-5h5"/></symbol>
+      <symbol id="i-video" viewBox="0 0 24 24"><rect x="2.5" y="6" width="13" height="12" rx="2.4"/><path d="M15.5 10l6-3.2v10.4l-6-3.2z"/></symbol>
+      <symbol id="i-msgsq" viewBox="0 0 24 24"><path d="M4 4.5h16v11.5H8.5L4 20.5z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+      <symbol id="i-bot" viewBox="0 0 24 24"><rect x="4.5" y="8" width="15" height="11" rx="3"/><path d="M12 4.8v3.2"/><circle cx="12" cy="3.6" r="1.1"/><circle cx="9.5" cy="13.2" r="1.2"/><circle cx="14.5" cy="13.2" r="1.2"/><path d="M2.8 12.5v3M21.2 12.5v3"/></symbol>
+      <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v6c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8v-6"/><path d="M4.5 11.5v6c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8v-6"/></symbol>
+      <symbol id="i-trending" viewBox="0 0 24 24"><path d="M3 16.5l6-6 4 4 8-8"/><path d="M17 6.5h4v4"/></symbol>
+      <symbol id="i-bar" viewBox="0 0 24 24"><path d="M3 20.5h18"/><rect x="5" y="11" width="3.2" height="7" rx="0.8"/><rect x="10.4" y="6" width="3.2" height="12" rx="0.8"/><rect x="15.8" y="14" width="3.2" height="4" rx="0.8"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v5.2c0 4.9-3.4 8.4-8 9.8-4.6-1.4-8-4.9-8-9.8V6z"/><path d="M9 12l2 2 4-4.2"/></symbol>
+      <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M16.5 2.5l4 4-4 4"/><path d="M3.5 11.5v-1.5a3.5 3.5 0 0 1 3.5-3.5h13.5"/><path d="M7.5 21.5l-4-4 4-4"/><path d="M20.5 12.5v1.5a3.5 3.5 0 0 1-3.5 3.5H3.5"/></symbol>
+      <symbol id="i-speech" viewBox="0 0 24 24"><path d="M20.5 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.9A8 8 0 1 1 20.5 11.5z"/><circle cx="8.5" cy="11.5" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="11.5" r="1" fill="currentColor" stroke="none"/><circle cx="15.5" cy="11.5" r="1" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.8 8.2l-2 5.6-5.6 2 2-5.6z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.3 4.3L19 7.2"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 15.5H3z"/><path d="M12 10v4"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="wrap">
+
+    <!-- HERO -->
+    <header>
+      <div class="pill glass"><span class="dot"></span> Estrategia de contenido · Nipponflex Biohacking</div>
+      <h1>De vender productos<br>a construir la <span class="grad">marca Gilmar</span></h1>
+      <p class="sub">La gente no compra el producto: te compra a vos. Primero confianza y valor real, después la venta llega sola — por quién sos, no por cuánto insistís.</p>
+      <div class="thesis">
+        <div class="from">Contenido para vender</div>
+        <div class="arrow">→</div>
+        <div class="to">Contenido que ayuda de verdad</div>
+      </div>
+    </header>
+
+    <!-- MIND MAP -->
+    <section>
+      <div class="reveal">
+        <div class="eyebrow">El mapa mental</div>
+        <h2 class="sec-title">Cómo encaja toda la estrategia</h2>
+        <p class="sec-desc">Un solo centro — la marca personal de Gilmar — y cuatro ramas que la alimentan. Pasá el mouse por cada nodo.</p>
+      </div>
+
+      <div class="map">
+        <!-- CENTER -->
+        <div class="node center-node glass reveal">
+          <div class="ico"><svg class="ic"><use href="#i-brand"/></svg></div>
+          <h3>Marca personal de Gilmar</h3>
+          <p>El activo central. No es "el que vende Nipponflex", es el referente de bienestar y biohacking en quien la gente confía. Todo lo de abajo construye esto.</p>
+        </div>
+
+        <div class="branch-label reveal">Las 4 ramas que la alimentan</div>
+
+        <!-- BRANCH 1 -->
+        <div class="node span6 glass reveal">
+          <div class="ico ico-em"><svg class="ic"><use href="#i-heart"/></svg></div>
+          <h3>1 · Posicionamiento: ayudar, no vender</h3>
+          <p>El cambio de fondo. Cada pieza nace de la pregunta "¿esto le sirve a quien lo ve?". El producto aparece como consecuencia, nunca como protagonista. Que se note que querés ayudar de verdad.</p>
+          <span class="tag">El porqué de todo</span>
+        </div>
+
+        <!-- BRANCH 2 -->
+        <div class="node span6 glass reveal">
+          <div class="ico ico-cy"><svg class="ic"><use href="#i-grid"/></svg></div>
+          <h3>2 · Plataformas (presencia)</h3>
+          <p>TikTok, Facebook e Instagram ya están corriendo. Sumamos <b>YouTube</b> como la base profunda: el lugar donde vive el contenido que de verdad transforma a alguien y que los reels solo insinúan.</p>
+          <span class="tag">TikTok · IG · FB · +YouTube</span>
+        </div>
+
+        <!-- BRANCH 3 -->
+        <div class="node span6 glass reveal">
+          <div class="ico ico-vi"><svg class="ic"><use href="#i-book"/></svg></div>
+          <h3>3 · Contenido de recursos</h3>
+          <p>Videos súper específicos por problema real: "Si vivís con mucho estrés, esto me salvó la vida". En YouTube el recurso completo; en reels, el gancho corto que lleva a él. Aporte primero, marca después.</p>
+          <span class="tag">YouTube largo + Reels gancho</span>
+        </div>
+
+        <!-- BRANCH 4 -->
+        <div class="node span6 glass reveal">
+          <div class="ico ico-go"><svg class="ic"><use href="#i-message"/></svg></div>
+          <h3>4 · Conversaciones (diagnóstico)</h3>
+          <p>Hablar con quien comenta o escribe: ¿qué te está pasando?, ¿solo querés cuidarte? Así descubrís el <b>tipo de avatar</b> y entendés a quién le hablás — y esa persona después te compra a vos.</p>
+          <span class="tag">Conocer al avatar</span>
+        </div>
+
+        <div class="branch-label reveal">El sistema que lo sostiene</div>
+
+        <!-- SYSTEM NODE -->
+        <div class="node center-node glass reveal" style="background:linear-gradient(135deg,rgba(56,189,248,.13),rgba(245,196,81,.10))">
+          <div class="ico" style="background:linear-gradient(135deg,var(--cyan),var(--gold))"><svg class="ic"><use href="#i-cpu"/></svg></div>
+          <h3>STNflow + ManyChat</h3>
+          <p><b>ManyChat</b> automatiza la entrega de recursos y las primeras preguntas; <b>STNflow</b> es el CRM/cerebro que registra todo, evita perder ventas y te dice qué decisiones tomar. Primero validamos a mano, después automatizamos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT ENGINE -->
+    <section>
+      <div class="reveal">
+        <div class="eyebrow">El motor de contenido</div>
+        <h2 class="sec-title">YouTube + Reels trabajando juntos</h2>
+        <p class="sec-desc">YouTube guarda el recurso profundo que genera confianza; los reels son las puertas de entrada que reparten el gancho por todas las plataformas.</p>
+      </div>
+
+      <div class="engine">
+        <div class="col glass reveal">
+          <h3><span class="ico ico-em" style="width:40px;height:40px;border-radius:11px"><svg class="ic"><use href="#i-play"/></svg></span> YouTube · el recurso completo</h3>
+          <p class="lead">Videos específicos, uno por problema. Profundos, honestos, accionables. Es la prueba de que Gilmar sabe y quiere ayudar.</p>
+          <div class="ex"><div class="ttl">"Tengo mucho estrés y esto me salvó la vida"</div><div class="meta">Historia personal + 3 hábitos + dónde encaja el producto al final</div></div>
+          <div class="ex"><div class="ttl">"No duermo bien hace meses — lo que probé"</div><div class="meta">Rutina de sueño / biohacking nocturno</div></div>
+          <div class="ex"><div class="ttl">"Sin energía todo el día: por dónde empezar"</div><div class="meta">Recurso para el avatar 'agotado'</div></div>
+        </div>
+
+        <div class="col glass reveal">
+          <h3><span class="ico ico-cy" style="width:40px;height:40px;border-radius:11px"><svg class="ic"><use href="#i-zap"/></svg></span> Reels · el gancho que reparte</h3>
+          <p class="lead">El mismo recurso, cortado en su momento más potente. Vive en TikTok, IG y FB, despierta curiosidad y empuja al video largo o a la conversación.</p>
+          <div class="ex"><div class="ttl">Gancho de 15s: "el error #1 con el estrés"</div><div class="meta">CTA suave → "el video completo está en mi YouTube"</div></div>
+          <div class="ex"><div class="ttl">Tip rápido accionable</div><div class="meta">Aporta valor solo, sin vender nada</div></div>
+          <div class="ex"><div class="ttl">Pregunta abierta al cierre</div><div class="meta">"¿A vos qué te pasa más, estrés o sueño?" → abre conversación</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNNEL -->
+    <section>
+      <div class="reveal">
+        <div class="eyebrow">El recorrido</div>
+        <h2 class="sec-title">Del recurso a la venta natural</h2>
+        <p class="sec-desc">Nadie siente que le vendieron. Sienten que los ayudaste — y le compran a la persona en quien ya confían.</p>
+      </div>
+
+      <div class="funnel">
+        <div class="step glass reveal"><div class="glow" style="background:var(--emerald)"></div><div class="num">01</div><h4>Atraer con valor</h4><p>El reel o video le resuelve algo real. Primer contacto = utilidad, no oferta.</p></div>
+        <div class="step glass reveal"><div class="glow" style="background:var(--cyan)"></div><div class="num">02</div><h4>Conversar</h4><p>Preguntás qué le pasa, qué busca. Identificás su avatar y lo hacés sentir visto.</p></div>
+        <div class="step glass reveal"><div class="glow" style="background:var(--violet)"></div><div class="num">03</div><h4>Confiar</h4><p>Más recursos útiles a lo largo del tiempo. Gilmar se vuelve "el que sabe de esto".</p></div>
+        <div class="step glass reveal"><div class="glow" style="background:var(--gold)"></div><div class="num">04</div><h4>Comprar</h4><p>Cuando ve los productos de biohacking, compra por quién sos. La venta es consecuencia.</p></div>
+      </div>
+    </section>
+
+    <!-- AVATAR DIAGNOSIS -->
+    <section>
+      <div class="reveal">
+        <div class="eyebrow">Conocer al avatar</div>
+        <h2 class="sec-title">Las preguntas que revelan a quién le hablás</h2>
+        <p class="sec-desc">No todos llegan por lo mismo. Estas conversaciones te dicen qué contenido crear y a quién dirigirlo.</p>
+      </div>
+
+      <div class="qa">
+        <div class="qcard glass reveal"><div class="q">"¿Hay algo que <span>te esté costando</span> en tu salud?"</div><div class="a">Detecta el dolor concreto: estrés, sueño, energía, peso, digestión.</div></div>
+        <div class="qcard glass reveal"><div class="q">"¿Buscás resolver algo o <span>solo querés cuidarte</span>?"</div><div class="a">Separa al que tiene un problema urgente del que es preventivo/biohacker.</div></div>
+        <div class="qcard glass reveal"><div class="q">"¿Qué ya <span>probaste</span> antes?"</div><div class="a">Te dice su nivel de consciencia y cuánta confianza vas a necesitar construir.</div></div>
+      </div>
+    </section>
+
+    <!-- DO / DON'T -->
+    <section>
+      <div class="reveal">
+        <div class="eyebrow">El tono</div>
+        <h2 class="sec-title">La línea entre ayudar y vender</h2>
+      </div>
+
+      <div class="dd">
+        <div class="card glass reveal">
+          <h3><span class="mark yes"><svg class="ic"><use href="#i-check"/></svg></span> Hacer siempre</h3>
+          <ul>
+            <li><span class="mark yes"><svg class="ic"><use href="#i-check"/></svg></span><span><b>Aportar antes de pedir.</b> Que el valor exista aunque nunca compren.</span></li>
+            <li><span class="mark yes"><svg class="ic"><use href="#i-check"/></svg></span><span><b>Hablar de problemas reales</b> con nombre y apellido: estrés, insomnio, cansancio.</span></li>
+            <li><span class="mark yes"><svg class="ic"><use href="#i-check"/></svg></span><span><b>Contar su propia historia.</b> "Esto me salvó la vida" conecta más que cualquier dato.</span></li>
+            <li><span class="mark yes"><svg class="ic"><use href="#i-check"/></svg></span><span><b>Conversar y preguntar.</b> Escuchar para entender al avatar, no para vender.</span></li>
+          </ul>
+        </div>
+        <div class="card glass reveal">
+          <h3><span class="mark no"><svg class="ic"><use href="#i-x"/></svg></span> Evitar</h3>
+          <ul>
+            <li><span class="mark no"><svg class="ic"><use href="#i-x"/></svg></span><span><b>Posteos catálogo.</b> Producto + precio + "comprá ya" como contenido principal.</span></li>
+            <li><span class="mark no"><svg class="ic"><use href="#i-x"/></svg></span><span><b>Sonar a vendedor.</b> Si parece anuncio, la gente se va.</span></li>
+            <li><span class="mark no"><svg class="ic"><use href="#i-x"/></svg></span><span><b>Hablar de la empresa</b> antes que de la persona que mira.</span></li>
+            <li><span class="mark no"><svg class="ic"><use href="#i-x"/></svg></span><span><b>Querer cerrar la venta</b> sin haber dado nada de valor primero.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECIPES / COMMENT BAIT -->
+    <section>
+      <div class="reveal">
+        <div class="eyebrow">El gancho que abre conversaciones</div>
+        <h2 class="sec-title">Recursos tipo receta con palabra clave</h2>
+        <p class="sec-desc">En YouTube vive el recurso; en el reel, Gilmar invita a pedirlo con un comentario. Cada palabra clave entrega un recurso y, sobre todo, <b>abre la conversación</b>. El mismo recurso le sirve para mandar por mensaje mientras charla.</p>
+      </div>
+
+      <div class="recipes">
+        <div class="recipe glass reveal">
+          <span class="kw">Comentá "GASTRITIS"</span>
+          <div class="hook">"La receta exacta del desayuno que me ayudó a calmar la gastritis en la mañana. ¿La querés? Comentá GASTRITIS y te la mando."</div>
+          <div class="rget"><b>Entrega:</b> la receta + cómo tomarla + por qué funciona</div>
+        </div>
+        <div class="recipe glass reveal">
+          <span class="kw">Comentá "ENERGÍA"</span>
+          <div class="hook">"Lo que tomo en ayunas para no caerme a media tarde. Te paso la receta exacta si comentás ENERGÍA."</div>
+          <div class="rget"><b>Entrega:</b> bebida/rutina de la mañana paso a paso</div>
+        </div>
+        <div class="recipe glass reveal">
+          <span class="kw">Comentá "DORMIR"</span>
+          <div class="hook">"Mi ritual de la noche para dormir profundo y despertar descansado. Comentá DORMIR y te lo envío."</div>
+          <div class="rget"><b>Entrega:</b> rutina + receta del té/infusión nocturna</div>
+        </div>
+        <div class="recipe glass reveal">
+          <span class="kw">Comentá "ESTRÉS"</span>
+          <div class="hook">"Los 5 minutos de la mañana que me bajaron el estrés sin medicación. ¿Te los paso? Comentá ESTRÉS."</div>
+          <div class="rget"><b>Entrega:</b> mini-rutina anti-cortisol</div>
+        </div>
+        <div class="recipe glass reveal">
+          <span class="kw">Comentá "HINCHAZÓN"</span>
+          <div class="hook">"El orden en que como para no hincharme + los 3 alimentos que saqué. Comentá HINCHAZÓN y te lo mando."</div>
+          <div class="rget"><b>Entrega:</b> guía simple de digestión</div>
+        </div>
+        <div class="recipe glass reveal">
+          <span class="kw">Comentá "DETOX"</span>
+          <div class="hook">"El agua que tomo apenas me levanto para arrancar el día liviano. Comentá DETOX y te paso la receta."</div>
+          <div class="rget"><b>Entrega:</b> receta de la mañana + hábito</div>
+        </div>
+      </div>
+
+      <div class="dual glass reveal">
+        <div class="ico"><svg class="ic"><use href="#i-refresh"/></svg></div>
+        <p><b>Doble uso.</b> El mismo recurso que reparte el reel, Gilmar lo tiene listo para mandar a mano cuando charla por mensaje — en el momento justo de la conversación. <b>Primero se valida cuál genera más respuestas</b>; recién después se automatiza con ManyChat.</p>
+      </div>
+    </section>
+
+    <!-- SYSTEM FLOW -->
+    <section>
+      <div class="reveal">
+        <div class="eyebrow">Cómo se conecta todo</div>
+        <h2 class="sec-title">El recurso entra, el dato queda</h2>
+        <p class="sec-desc">Cada comentario o mensaje no es solo una entrega: es información que termina ordenada en STNflow para decidir y dar seguimiento.</p>
+      </div>
+
+      <div class="sysflow">
+        <div class="sysnode glass reveal"><span class="si c-cy"><svg class="ic"><use href="#i-video"/></svg></span><h4>Reel con CTA</h4><p>"Comentá la palabra clave"</p></div>
+        <div class="sysarrow reveal">→</div>
+        <div class="sysnode glass reveal"><span class="si c-cy"><svg class="ic"><use href="#i-msgsq"/></svg></span><h4>Comentario / DM</h4><p>La persona pide el recurso</p></div>
+        <div class="sysarrow reveal">→</div>
+        <div class="sysnode glass reveal"><span class="si c-vi"><svg class="ic"><use href="#i-bot"/></svg></span><h4>ManyChat</h4><p>Manda el recurso y pregunta (cuando ya está activo)</p></div>
+        <div class="sysarrow reveal">→</div>
+        <div class="sysnode glass brain reveal"><span class="si c-em"><svg class="ic"><use href="#i-database"/></svg></span><h4>STNflow (CRM)</h4><p>Guarda el contacto, el avatar y el seguimiento</p></div>
+        <div class="sysarrow reveal">→</div>
+        <div class="sysnode glass reveal"><span class="si c-go"><svg class="ic"><use href="#i-trending"/></svg></span><h4>Decisión + venta</h4><p>Seguimiento al momento justo</p></div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section>
+      <div class="reveal">
+        <div class="eyebrow">El paso a paso</div>
+        <h2 class="sec-title">Primero a mano, después se automatiza</h2>
+        <p class="sec-desc">No se automatiza lo que todavía no funciona. Validamos cada paso manualmente y, cuando da resultado, ManyChat se encarga de lo repetitivo.</p>
+      </div>
+
+      <div class="roadmap">
+        <div class="phase glass p-manual reveal">
+          <div class="pnum">1</div>
+          <div class="pbody">
+            <h4>Validar a mano</h4>
+            <span class="when">Ahora</span>
+            <ul>
+              <li>El contenido <b>tira CTAs a recursos</b>: "comentá la palabra clave".</li>
+              <li>Gilmar responde y <b>manda el recurso él mismo</b> por mensaje.</li>
+              <li>Mientras charla, <b>valida preguntando</b>: ¿hay algo que te cuesta?, ¿buscás resolver algo o solo cuidarte?, ¿qué probaste antes?</li>
+              <li>Crea y comparte su <b>enlace de calendario</b> para agendar una llamada con los más interesados.</li>
+              <li><b>Objetivo:</b> ver qué recursos y qué preguntas generan más conversación.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase glass p-semi reveal">
+          <div class="pnum">2</div>
+          <div class="pbody">
+            <h4>Empezar a registrar en STNflow</h4>
+            <span class="when">Cuando hay flujo de conversaciones</span>
+            <ul>
+              <li>Cada conversación se vuelve un <b>contacto dentro de STN</b>.</li>
+              <li>Se <b>etiqueta por avatar y por problema</b> (estrés, sueño, gastritis…).</li>
+              <li>Se agendan <b>seguimientos</b> para que nadie quede "en visto".</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase glass p-auto reveal">
+          <div class="pnum">3</div>
+          <div class="pbody">
+            <h4>Automatizar con ManyChat (de a poco)</h4>
+            <span class="when">Una vez validado qué funciona</span>
+            <ul>
+              <li>ManyChat <b>detecta la palabra clave</b> y manda el recurso solo, 24/7.</li>
+              <li>Hace las <b>primeras preguntas de calificación</b> automáticamente.</li>
+              <li>Pasa la <b>conversación ya tibia a Gilmar</b> para el toque humano.</li>
+              <li>Manda <b>toda la data a STNflow</b> sin cargarla a mano.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase glass p-scale reveal">
+          <div class="pnum">4</div>
+          <div class="pbody">
+            <h4>Escalar y decidir con datos</h4>
+            <span class="when">Estrategia ya validada</span>
+            <ul>
+              <li><b>Biblioteca de recursos</b> cargada en STN, lista para enviar.</li>
+              <li><b>Secuencias de seguimiento</b> automáticas para no perder a nadie.</li>
+              <li>El <b>tablero de métricas</b> dice qué duplicar y qué cortar.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="note reveal">
+        <p><b>La regla:</b> ManyChat no reemplaza a Gilmar — le saca el trabajo repetitivo para que dedique su tiempo a las conversaciones que cierran. Se construye pieza por pieza, a medida que validamos.</p>
+      </div>
+    </section>
+
+    <!-- STNFLOW CRM -->
+    <section>
+      <div class="reveal">
+        <div class="eyebrow">El cerebro del negocio</div>
+        <h2 class="sec-title">STNflow como CRM: para que nada se pierda</h2>
+        <p class="sec-desc">Todo lo que entra por contenido y ManyChat se ordena en un solo lugar. Ahí Gilmar deja de adivinar y empieza a decidir con datos.</p>
+      </div>
+
+      <div class="crm">
+        <div class="c glass reveal">
+          <div class="ci ico-cy"><svg class="ic"><use href="#i-bar"/></svg></div>
+          <h4>Decidir con métricas</h4>
+          <p>Qué recurso trae más gente, qué avatar compra más, cuántas conversaciones terminan en venta y dónde se enfrían. Sabés qué duplicar y qué soltar.</p>
+        </div>
+        <div class="c glass reveal">
+          <div class="ci ico-em"><svg class="ic"><use href="#i-shield"/></svg></div>
+          <h4>No perder ventas</h4>
+          <p>Cada interesado queda registrado. Nadie se queda "en visto" ni se olvida — el lead sigue vivo hasta que decide.</p>
+        </div>
+        <div class="c glass reveal">
+          <div class="ci ico-vi"><svg class="ic"><use href="#i-repeat"/></svg></div>
+          <h4>Seguimientos ordenados</h4>
+          <p>Te dice a quién escribir y cuándo, con recordatorios. El seguimiento es donde se cierra la mayoría de las ventas.</p>
+        </div>
+        <div class="c glass reveal">
+          <div class="ci ico-go"><svg class="ic"><use href="#i-speech"/></svg></div>
+          <h4>Saber cómo hablarles</h4>
+          <p>El historial + el avatar de cada persona te da el tono justo y el próximo paso. Conversaciones personalizadas, no genéricas.</p>
+        </div>
+        <div class="c glass reveal">
+          <div class="ci ico-em"><svg class="ic"><use href="#i-book"/></svg></div>
+          <h4>Todos los recursos en un lugar</h4>
+          <p>La biblioteca de recetas y materiales lista para mandar en el momento exacto de la charla, sin buscar.</p>
+        </div>
+        <div class="c glass reveal">
+          <div class="ci ico-cy"><svg class="ic"><use href="#i-compass"/></svg></div>
+          <h4>Una sola vista del negocio</h4>
+          <p>De seguidor a cliente, todo el recorrido visible. Gilmar ve su embudo completo y deja de manejar todo de memoria.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- METRICS / BUSINESS HEALTH -->
+    <section>
+      <div class="reveal">
+        <div class="eyebrow">El termómetro del negocio</div>
+        <h2 class="sec-title">Las métricas que dicen qué está bien y qué no</h2>
+        <p class="sec-desc">Para esto sirve STNflow: convierte la actividad diaria en números. Cada métrica tiene una <b>señal sana</b> y una <b>señal de alerta</b> — así Gilmar sabe dónde está fuerte y dónde corregir, sin adivinar.</p>
+      </div>
+
+      <div class="northstar glass reveal">
+        <div class="ns-ic"><svg class="ic"><use href="#i-target"/></svg></div>
+        <div>
+          <h4>La métrica madre</h4>
+          <p><b>Conversaciones reales que terminan en venta.</b> Todas las demás existen para alimentar esta. Si sube, el sistema funciona; si se traba, las otras métricas te dicen en qué eslabón se rompe.</p>
+        </div>
+      </div>
+
+      <div class="metrics">
+
+        <div class="metric glass reveal">
+          <div class="top">
+            <div class="mi ico-cy"><svg class="ic"><use href="#i-trending"/></svg></div>
+            <div><span class="stage">Atraer</span><h4>Alcance que crece</h4></div>
+          </div>
+          <p class="what">Cuántas personas nuevas ven el contenido cada semana.</p>
+          <div class="signals">
+            <div class="sig good"><svg class="ic sic"><use href="#i-check"/></svg><span><b>Sano:</b> sube o se sostiene mientras publica constante.</span></div>
+            <div class="sig bad"><svg class="ic sic"><use href="#i-alert"/></svg><span><b>Alerta:</b> cae varias semanas seguidas → el contenido no engancha o falta constancia.</span></div>
+          </div>
+        </div>
+
+        <div class="metric glass reveal">
+          <div class="top">
+            <div class="mi ico-go"><svg class="ic"><use href="#i-zap"/></svg></div>
+            <div><span class="stage">Activar</span><h4>Tasa de palabra clave</h4></div>
+          </div>
+          <p class="what">De los que ven el reel, cuántos comentan o piden el recurso.</p>
+          <div class="signals">
+            <div class="sig good"><svg class="ic sic"><use href="#i-check"/></svg><span><b>Sano:</b> el gancho genera comentarios y hay recursos que destacan sobre el resto.</span></div>
+            <div class="sig bad"><svg class="ic sic"><use href="#i-alert"/></svg><span><b>Alerta:</b> muchas vistas y casi cero comentarios → el CTA o el recurso no interesa.</span></div>
+          </div>
+        </div>
+
+        <div class="metric glass reveal">
+          <div class="top">
+            <div class="mi ico-vi"><svg class="ic"><use href="#i-message"/></svg></div>
+            <div><span class="stage">Conversar</span><h4>Conversaciones iniciadas</h4></div>
+          </div>
+          <p class="what">Cuántos pedidos de recurso se vuelven una charla real, con ida y vuelta.</p>
+          <div class="signals">
+            <div class="sig good"><svg class="ic sic"><use href="#i-check"/></svg><span><b>Sano:</b> la mayoría responde cuando Gilmar pregunta algo.</span></div>
+            <div class="sig bad"><svg class="ic sic"><use href="#i-alert"/></svg><span><b>Alerta:</b> entrega el recurso y nadie sigue hablando → falta preguntar o el tono es frío.</span></div>
+          </div>
+        </div>
+
+        <div class="metric glass reveal">
+          <div class="top">
+            <div class="mi ico-go"><svg class="ic"><use href="#i-speech"/></svg></div>
+            <div><span class="stage">Calificar</span><h4>Diagnósticos completos</h4></div>
+          </div>
+          <p class="what">Cuántas charlas llegan a saber el avatar: su problema y su intención.</p>
+          <div class="signals">
+            <div class="sig good"><svg class="ic sic"><use href="#i-check"/></svg><span><b>Sano:</b> la gente se abre y cuenta qué le pasa.</span></div>
+            <div class="sig bad"><svg class="ic sic"><use href="#i-alert"/></svg><span><b>Alerta:</b> las preguntas quedan sin respuesta → suenan a interrogatorio o a venta.</span></div>
+          </div>
+        </div>
+
+        <div class="metric glass reveal">
+          <div class="top">
+            <div class="mi ico-em"><svg class="ic"><use href="#i-target"/></svg></div>
+            <div><span class="stage">Vender</span><h4>Tasa de conversión</h4></div>
+          </div>
+          <p class="what">De las conversaciones, cuántas agendan llamada o terminan comprando.</p>
+          <div class="signals">
+            <div class="sig good"><svg class="ic sic"><use href="#i-check"/></svg><span><b>Sano:</b> un % estable convierte y mejora con el tiempo al crecer la confianza.</span></div>
+            <div class="sig bad"><svg class="ic sic"><use href="#i-alert"/></svg><span><b>Alerta:</b> muchas charlas y cero ventas → ayuda, pero nunca invita a dar el paso.</span></div>
+          </div>
+        </div>
+
+        <div class="metric glass reveal">
+          <div class="top">
+            <div class="mi ico-cy"><svg class="ic"><use href="#i-repeat"/></svg></div>
+            <div><span class="stage">No perder</span><h4>Seguimientos al día</h4></div>
+          </div>
+          <p class="what">Cuántos interesados están siendo seguidos vs cuántos quedan olvidados.</p>
+          <div class="signals">
+            <div class="sig good"><svg class="ic sic"><use href="#i-check"/></svg><span><b>Sano:</b> casi nadie sin un próximo paso asignado.</span></div>
+            <div class="sig bad"><svg class="ic sic"><use href="#i-alert"/></svg><span><b>Alerta:</b> la lista de "en visto" crece → se pierden ventas por no volver a escribir.</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="note reveal">
+        <p><b>Cómo leerlas:</b> se miran en orden de embudo. Si una etapa está sana y la siguiente cae, ahí está el problema a corregir. La métrica no juzga a Gilmar — le muestra exactamente dónde poner el esfuerzo esta semana.</p>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section>
+      <div class="closing glass reveal">
+        <h2>El producto cambia.<br><span class="grad">La confianza en Gilmar, no.</span></h2>
+        <p>Construí la marca con recursos que ayudan de verdad, conocé a tu gente conversando, y la venta de biohacking llega sola — porque le compran a quien los ayudó primero.</p>
+      </div>
+    </section>
+
+    <footer>
+      Estrategia de marca personal · Gilmar × Nipponflex Biohacking · Documento de trabajo
+    </footer>
+  </div>
+
+  <script>
+    // Scroll reveal
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach((e,i)=>{
+        if(e.isIntersecting){
+          e.target.style.transitionDelay = (e.target.dataset.d || (i%4)*60) + 'ms';
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Subtle parallax on aurora
+    window.addEventListener('mousemove',(e)=>{
+      const x=(e.clientX/window.innerWidth-.5), y=(e.clientY/window.innerHeight-.5);
+      document.querySelectorAll('.blob').forEach((b,i)=>{
+        const f=(i+1)*8;
+        b.style.transform=`translate(${x*f}px,${y*f}px)`;
+      });
+    });
+  </script>
+</body>
+</html>
